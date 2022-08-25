@@ -22,7 +22,9 @@ function fetchMusixMatchResults(query) {
 
     console.log(lyricAPI);
     if (q.length > 0) {
-        fetch(lyricAPI)
+        fetch(lyricAPI, {
+            
+        })
             .then((response) => {
                 return response;
             })
