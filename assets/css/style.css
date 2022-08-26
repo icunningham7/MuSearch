@@ -1,0 +1,67 @@
+
+header {
+    background-color: black;
+    color:white
+}
+h1 {
+    text-align: center;
+}
+.top-bar {
+    background: black;
+    color: white;
+}
+ 
+/* Search Bar */
+  .animated-search-form[type=search] {
+    width: 10rem;
+    border: 0.125rem solid #e6e6e6;
+    box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.18);
+    border-radius: 0;
+    background-image: url("https://image.ibb.co/i7NbrQ/search_icon_15.png");
+    background-position: 0.625rem 0.625rem;
+    background-repeat: no-repeat;
+    padding: 0.75rem 1.25rem 0.75rem 2rem;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  .animated-search-form[type=search]:focus {
+    width: 100%;
+  }
+ 
+ /* Genre Bar */
+.mobile-app-filter-menu {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    list-style-type: none;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+    margin: 0;
+    height: 2.8125rem;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border-top: 1px solid #cacaca;
+    border-bottom: 1px solid #cacaca;
+  }
+  
+  /* .mobile-app-filter-menu li a {
+    color: #cacaca;
+  }
+  
+  .mobile-app-filter-menu li.is-active a {
+    color: #8a8a8a;
+  } */
+  /* .list-one {
+    background-color: blue;
+  }
+  .list-two {
+    background-color: rgb(0, 255, 145);
+  }
+  .list-three {
+    background-color: rgb(255, 0, 153);
+  } */
+  
+  
+  
