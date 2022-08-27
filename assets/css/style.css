@@ -1,18 +1,41 @@
 header {
-    background-color: black;
-    color:white
-}
+    background: linear-gradient(135deg, rgb(147, 147, 147) 0%, rgb(43, 43, 43) 100%);
+    color:white;
+  }
 h1 {
     text-align: center;
 }
 .top-bar {
-    background: black;
-    color: white;
+  background: black;
+   color: white;
 }
- 
+.album-cover {
+  width: 125px;
+  height: 125px;
+  margin: 2%;
+  box-shadow: 2px 2px rgb(43, 43, 43);
+}
+/* .play-button {
+  background-color: white;
+} */
+.card {
+  width: 550px;
+  height: 150px;
+  flex-direction: row;
+  background: linear-gradient(135deg, rgb(147, 147, 147) 0%, rgb(43, 43, 43) 100%);
+  color:white;
+  align-items: center;
+  justify-content: space-between;
+}
+.play-button{
+  width:70px;
+  height:70px;
+  margin-right: 3px;
+  
+}
 /* Search Bar */
   .animated-search-form[type=search] {
-    width: 10rem;
+    width: 30rem;
     border: 0.125rem solid #e6e6e6;
     box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.18);
     border-radius: 0;
@@ -21,26 +44,14 @@ h1 {
     background-repeat: no-repeat;
     padding: 0.75rem 1.25rem 0.75rem 2rem;
     transition: width 0.4s ease-in-out;
+    margin: 7rem;
   }
   
   .animated-search-form[type=search]:focus {
     width: 100%;
   }
  
- /* Genre Bar */
-.mobile-app-filter-menu {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    list-style-type: none;
-    -webkit-justify-content: space-around;
-        -ms-flex-pack: distribute;
-            justify-content: space-around;
-    margin: 0;
-    height: 2.8125rem;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    border-top: 1px solid #cacaca;
-    border-bottom: 1px solid #cacaca;
-  }
+
+
+
+  
