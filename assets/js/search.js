@@ -1,5 +1,5 @@
 // DOM Variables
-let resultListEl = document.getElementById('results-list');
+let resultListEl = document.getElementById('search-results');
 let searchEl = document.getElementById('search');
 let searchFormEl = document.getElementById('search-form');
 // let searchBtnEl = document.getElementById('search-button');
@@ -55,7 +55,7 @@ function fetchSongSearchResults(search) {
 }
 
 
-async function fetchSongMetaData(songId) {
+function fetchSongMetaData(songId) {
     let songMetaData = {};
 
     const songOptions = {
@@ -68,7 +68,7 @@ async function fetchSongMetaData(songId) {
 
     let songMetaDataAPI = `https://genius.p.rapidapi.com/songs/${songId}`;
 
-    return await fetch(songMetaDataAPI, songOptions)
+    return fetch(songMetaDataAPI, songOptions)
         .then(response => response.json())
         .then(data => data.response.song)
         .then((results) => {
@@ -77,19 +77,22 @@ async function fetchSongMetaData(songId) {
             console.log(mediaList);
             for (let mediaItem of mediaList) {
                 if (mediaItem.provider.toLowerCase() === 'spotify') {
-                    console.log(mediaItem.url);
                     let mediaUrl = mediaItem.url.split('/');
                     let playerSongId = mediaUrl.pop() || mediaUrl.pop();
                     songMetaData.playerId = playerSongId;
                     console.log(`added playerSongId: ${songMetaData.playerId}`);
                     return songMetaData;
+                } else if ((mediaItem.provider.toLowerCase() === 'youtube')) {
+                    songMetaData.videoId = mediaItem.url;
+                    console.log(`added songVideoId: ${songMetaData.playerId}`);
+
                 }
             }
             console.log(`No Spotify Id Found for ${results.full_title}`);
             return songMetaData;
         })
         .catch(err => console.log(err));
-    
+
 }
 // --- APIs: End --- //
 
@@ -108,32 +111,41 @@ function displaySongSearchResults(results) {
 function buildSearchCard(result) {
     let songId = result.result.id;
     fetchSongMetaData(songId).then((playerMetaData) => {
-        console.log('PMD');
-        console.log(playerMetaData);
         let playerId = playerMetaData.playerId;
-
-        console.log(`${playerId}`);
+        let videoId = playerMetaData.videoId;
 
         let resultEl = document.createElement('div');
         let albumEl = document.createElement('img');
         let artistEl = document.createElement('h3');
-        let songEl = document.createElement('p');
+        let songEl = document.createElement('h5');
+        let playBtnEl = document.createElement('button');
+        let playBtnImgEl = document.createElement('img');
 
-        resultEl.classList.add('result-card');
+        resultEl.classList.add('card','result-card', 'flex-container');
         resultEl.setAttribute('data-song-id', result.result.id);
         resultEl.setAttribute('data-song', result.result.title_with_featured);
         resultEl.setAttribute('data-artist-id', result.result.primary_artist.id);
         resultEl.setAttribute('data-artist', result.result.primary_artist.name);
-        resultEl.setAttribute('data-player-id', playerId);
+        if (playerId) {
+            resultEl.setAttribute('data-player-id', playerId);
+        }
+        if (videoId) {
+            resultEl.setAttribute('data-video-id', videoId);
+        }
 
-
+        albumEl.classList.add('album-cover')
         albumEl.setAttribute('src', result.result.song_art_image_thumbnail_url);
         artistEl.innerText = result.result.artist_names;
         songEl.innerText = result.result.title_with_featured;
 
+        playBtnEl.classList.add('play-button');
+        playBtnImgEl.setAttribute('src', './assets/images/Play Button.png')
+
         resultEl.appendChild(albumEl);
         resultEl.appendChild(artistEl);
         resultEl.appendChild(songEl);
+        resultEl.appendChild(playBtnEl);
+        playBtnEl.appendChild(playBtnImgEl);
         resultListEl.appendChild(resultEl);
 
         resultListEl.addEventListener('click', setSong);
@@ -151,10 +163,15 @@ function setSong(event) {
         artistId: event.target.closest('.result-card').dataset.artistId,
         song: event.target.closest('.result-card').dataset.song,
         songId: event.target.closest('.result-card').dataset.songId,
-        playerId: event.target.closest('.result-card').dataset.playerId,
-        
+
     }
 
+    if (event.target.closest('.result-card').dataset.playerId) {
+        songDetails.playerId = event.target.closest('.result-card').dataset.playerId;
+    }
+    if (event.target.closest('.result-card').dataset.videoId) {
+        songDetails.videoId = event.target.closest('.result-card').dataset.videoId;
+    }
     localStorage.setItem('song', JSON.stringify(songDetails));
     window.location.assign('./results.html');
 
