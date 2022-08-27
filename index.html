@@ -30,14 +30,15 @@
     </header>
     <main>
       <!-- Search Form -->
-      <div class="grid-x grid-padding-x align-center ">
+      <form id="search-form" class="grid-x grid-padding-x align-center ">
          <input
+            id="search"
             type="search"
             name="search"
             placeholder="Search.."
             class="animated-search-form"
           />
-        </div>
+        </form>
       
       <!-- Possible Genre Selector -->
       <!-- <ul class="mobile-app-filter-menu" data-mobile-app-filter-menu>
@@ -51,7 +52,7 @@
       <!-- Popular Music Section, contect needs to be replaced with search results -->
       <!-- <div class="grid-x grid margin-x gird-margin-y"> -->
         <div class="flex-container align-spaced">
-          <div class="music-list" >
+          <div id="results-list" class="music-list" >
             <img src="./assets/images/Music Place Holder.png" alt="Music Place Holder"/>
             <a href=""></a> 
             <a href=""></a>
@@ -61,6 +62,6 @@
           </div>        
         </div>
     </main>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/search.js"></script>
   </body>
 </html>
