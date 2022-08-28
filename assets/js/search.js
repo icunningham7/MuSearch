@@ -80,6 +80,7 @@ function displayLyricsSearchResults(results) {
         let resultEl = document.createElement('div');
         let albumEl = document.createElement('img');
         let artistEl = document.createElement('h3');
+        // I think we need to switch this p to an 'h5'to match the html.
         let songEl = document.createElement('p');
 
         resultEl.setAttribute('data-song-id', result.result.id)
