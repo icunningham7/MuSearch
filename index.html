@@ -40,31 +40,20 @@
     
     <main>
       <!-- Search Form -->
-      <div class="flex-container align-center">
-         <input
+      <form id="search-form"  class="flex-container align-center">
+         <input 
+            id="search" 
             type="search"
             name="search"
-            placeholder="Search.."
+            placeholder="Search..."
             class="animated-search-form"/>
-      </div>
+      </form>
       <!--Music Cards to be populated with JS  -->
       <div class="flex-container align-spaced">
         <div class="music-list" id="search-results">
-          <div class="card result-card flex-container" data-song-id="80441"data-artist-id="34418">
-            <img class="album-cover" src="https://images.genius.com/726452abdcad387e5d060cb1cb2d75ae.300x300x1.jpg">
-            <!-- Tt team I think artist and song should sit on top of each other to accomodate for longer titles, or just need to make the container longer -->
-            <!-- artist -->
-              <h3>Froggy Fresh</h3>
-              <!-- song -->
-              <h5>Stolen Bikes</h5>
-              <!-- Not sure if I did this button right or if we want it to be a button or just an img -->
-              <button class="play-button"><img src="assets/images/Play Button.png"></button>
-          </div>
         </div>        
       </div>
-    
     </main>
-    
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
