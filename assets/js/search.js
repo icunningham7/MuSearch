@@ -9,6 +9,7 @@ var count = 5;
 
 // --- Form Search Event: Start --- //
 function searchForMusic(event) {
+    console.log('searching');
     event.preventDefault();
 
     if (isSearching) {
