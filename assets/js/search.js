@@ -4,17 +4,26 @@ let searchEl = document.getElementById('search');
 let searchFormEl = document.getElementById('search-form');
 // let searchBtnEl = document.getElementById('search-button');
 
+let isSearching = false;
 var count = 5;
 
 // --- Form Search Event: Start --- //
 function searchForMusic(event) {
     event.preventDefault();
+
+    if (isSearching) {
+
+        return;
+    }
+
+    isSearching = true;
+
+
     let searchText = searchEl.value.trim();
     if (searchText.length > 0) {
         getSearchResults(searchText)
-            .then((list) => {
-                console.log('race condition');
-                console.log(list);
+            .then(() => {
+                isSearching = false;
             })
 
     }
@@ -26,7 +35,8 @@ async function getSearchResults(search) {
 
     let searchResults = await fetchSongSearchResults(search)
 
-    displaySongSearchResults(searchResults);
+    await displaySongSearchResults(searchResults);
+
 
 
     return searchResults;
@@ -74,21 +84,17 @@ function fetchSongMetaData(songId) {
         .then((results) => {
             songMetaData.embed = results.embed_content;
             let mediaList = results.media;
-            console.log(mediaList);
             for (let mediaItem of mediaList) {
                 if (mediaItem.provider.toLowerCase() === 'spotify') {
                     let mediaUrl = mediaItem.url.split('/');
                     let playerSongId = mediaUrl.pop() || mediaUrl.pop();
                     songMetaData.playerId = playerSongId;
-                    console.log(`added playerSongId: ${songMetaData.playerId}`);
                     return songMetaData;
                 } else if ((mediaItem.provider.toLowerCase() === 'youtube')) {
                     songMetaData.videoId = mediaItem.url;
-                    console.log(`added songVideoId: ${songMetaData.playerId}`);
 
-                }
+                } // ToDo: We should add functionality for managing if there's no spotify or youtube
             }
-            console.log(`No Spotify Id Found for ${results.full_title}`);
             return songMetaData;
         })
         .catch(err => console.log(err));
@@ -100,17 +106,16 @@ function fetchSongMetaData(songId) {
 
 // --- Display Results: Start --- //
 function displaySongSearchResults(results) {
-    console.log('indisplay');
     resultListEl.textContent = '';
 
-    results.forEach(buildSearchCard);
+    return Promise.all(results.map((result) => buildSearchCard(result)));
 
 }
 
 
 function buildSearchCard(result) {
     let songId = result.result.id;
-    fetchSongMetaData(songId).then((playerMetaData) => {
+    return fetchSongMetaData(songId).then((playerMetaData) => {
         let playerId = playerMetaData.playerId;
         let videoId = playerMetaData.videoId;
 
@@ -121,7 +126,7 @@ function buildSearchCard(result) {
         let playBtnEl = document.createElement('button');
         let playBtnImgEl = document.createElement('img');
 
-        resultEl.classList.add('card','result-card', 'flex-container');
+        resultEl.classList.add('card', 'result-card', 'flex-container');
         resultEl.setAttribute('data-song-id', result.result.id);
         resultEl.setAttribute('data-song', result.result.title_with_featured);
         resultEl.setAttribute('data-artist-id', result.result.primary_artist.id);
