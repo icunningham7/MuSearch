@@ -2,14 +2,12 @@
 let resultListEl = document.getElementById('search-results');
 let searchEl = document.getElementById('search');
 let searchFormEl = document.getElementById('search-form');
-// let searchBtnEl = document.getElementById('search-button');
 
 let isSearching = false;
 var count = 5;
 
 // --- Form Search Event: Start --- //
 function searchForMusic(event) {
-    console.log('searching');
     event.preventDefault();
 
     if (isSearching) {
@@ -31,7 +29,7 @@ function searchForMusic(event) {
 }
 // --- Form Search Event: End --- //
 
-// --- Search Results Controller
+// --- Search Results Controller --- //
 async function getSearchResults(search) {
 
     let searchResults = await fetchSongSearchResults(search)
@@ -94,7 +92,7 @@ function fetchSongMetaData(songId) {
                 } else if ((mediaItem.provider.toLowerCase() === 'youtube')) {
                     songMetaData.videoId = mediaItem.url;
 
-                } // ToDo: We should add functionality for managing if there's no spotify or youtube
+                }
             }
             return songMetaData;
         })
@@ -164,6 +162,7 @@ function buildSearchCard(result) {
 // --- LocalStorage: Start --- //
 // save song details for use on the lyrics page
 function setSong(event) {
+    event.preventDefault();
 
     let songDetails = {
         artist: event.target.closest('.result-card').dataset.artist,

@@ -1,8 +1,6 @@
 // DOM Variables
 let playerContainerEl = document.getElementById('song-player');
 let lyricsContainerEl = document.getElementById('song-lyrics');
-let lyricsEmbedEl = document.querySelector('.lyrics-embed');
-let lyricsEmbedScriptEl = document.getElementById('lyrics-embed-script');
 
 // --- LocalStorage: Start --- //
 // get song details from localStorage
@@ -65,13 +63,26 @@ async function displaySongplaylist(playerId) {
 
 }
 
+function displayErrorMessage() {
+    let ErrorCardEl = document.createElement('div');
+    let ErrorMessageEl = document.createElement('h2');
+
+    ErrorCardEl.classList.add('card', 'flex-container', 'align-center');
+    ErrorMessageEl.innerHTML = "Hmm... something went wrong. Please go back to the search page and try again.";
+
+    ErrorCardEl.appendChild(ErrorMessageEl);
+    lyricsContainerEl.appendChild(ErrorCardEl);
+}
+
+
 // --- Display Song Page: Start --- //
 function displaySongDetails() {
     let songDetails = getSong();
 
-    if (!songDetails.songId) {
+    if (!songDetails || !songDetails.songId) {
         console.log('There was an issue getting the song data');
-        return; //ToDo: add some error catching functionality
+        displayErrorMessage();
+        return;
     }
 
     if (songDetails.playerId) {
