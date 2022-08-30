@@ -47,6 +47,14 @@ h1 {
     .animated-search-form[type=search]:focus {
     width: 100%;
   }
+
+#song-player{
+  align-items: center;
+}
+
+#song-lyrics{
+  align-items: center;
+}
  
 
 
