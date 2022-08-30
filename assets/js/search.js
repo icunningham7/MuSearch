@@ -123,6 +123,7 @@ function buildSearchCard(result) {
         let albumEl = document.createElement('img');
         let artistEl = document.createElement('h3');
         let songEl = document.createElement('h5');
+
         let playBtnEl = document.createElement('button');
         let playBtnImgEl = document.createElement('img');
 

@@ -2,22 +2,14 @@ header {
     background: linear-gradient(135deg, rgb(147, 147, 147) 0%, rgb(43, 43, 43) 100%);
     color:white;
   }
+
 h1 {
     text-align: center;
+    font-family: 'Righteous', cursive;
+    font-size: 75px;
 }
-.top-bar {
-  background: black;
-   color: white;
-}
-.album-cover {
-  width: 125px;
-  height: 125px;
-  margin: 2%;
-  box-shadow: 2px 2px rgb(43, 43, 43);
-}
-/* .play-button {
-  background-color: white;
-} */
+
+/* Search Results Card Styling */
 .card {
   width: 550px;
   height: 150px;
@@ -27,12 +19,18 @@ h1 {
   align-items: center;
   justify-content: space-between;
 }
+.album-cover {
+  width: 125px;
+  height: 125px;
+  margin: 2%;
+  box-shadow: 2px 2px rgb(43, 43, 43);
+}
 .play-button{
   width:70px;
   height:70px;
   margin-right: 3px;
-  
 }
+
 /* Search Bar */
   .animated-search-form[type=search] {
     width: 30rem;
@@ -46,8 +44,7 @@ h1 {
     transition: width 0.4s ease-in-out;
     margin: 7rem;
   }
-  
-  .animated-search-form[type=search]:focus {
+    .animated-search-form[type=search]:focus {
     width: 100%;
   }
  
