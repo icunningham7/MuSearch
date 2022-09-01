@@ -22,13 +22,15 @@ I WANT to be able to search for a song
 So THAT I can listen to the song and view the lyrics.
 <br><br>
 <h3>Acceptance Criteria</h3>
-GIVEN a music dashoard with form search options:
-WHEN I search for a song,
-THEN I am presented with 5 options that include Artist, Song Title and Album Art.
-WHEN I select a song option,
-THEN I am directed to the song where I can listen and I am presented with the lyrics for that song.
-WHEN I am done listening
-THEN I can search the next song.
+<ul>
+  <li>GIVEN a music dashoard with form search options:
+  <li>WHEN I search for a song,
+THEN I am presented with 5 options that include Artist, Song Title and Album Art.</li>
+  <li>WHEN I select a song option,
+THEN I am directed to the song where I can listen and I am presented with the lyrics for that song.</li>
+  <li>WHEN I am done listening
+THEN I can search the next song.</li>
+</ul>
 <br><br>
 <h3>Link to Deployed Page:</h3>
 <br><br>
@@ -36,8 +38,13 @@ THEN I can search the next song.
 <br><br>
 <h3>Sources</h3>
 <ul>
-   <li>Background Photo by <a href="https://unsplash.com/@shapelined?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Shapelined</a> on <a href="https://unsplash.com/wallpapers/colors/grey?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  <li>
-
+  <li>Rapid API - Genius and Spotify</li>
+  <li>Background Photo by <a href="https://unsplash.com/@shapelined?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Shapelined</a> on <a href="https://unsplash.com/wallpapers/colors/grey?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  </li>
+  <li>Google Fonts</li>
+  <li>Foundation Framework</li>
+  <li>Figma</li>
+  <li>YouTube</li>
+  <li>Post Scribe JS Library</li>
 </ul>
   
