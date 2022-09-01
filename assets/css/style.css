@@ -11,26 +11,48 @@ h1 {
 
 /* Search Results Card Styling */
 .card {
-  width: 550px;
+  width: 1000px;
   height: 150px;
   flex-direction: row;
   background: linear-gradient(135deg, rgb(147, 147, 147) 0%, rgb(43, 43, 43) 100%);
   color:white;
-  align-items: center;
-  justify-content: space-between;
 }
+
 .album-cover {
   width: 125px;
   height: 125px;
   margin: 2%;
   box-shadow: 2px 2px rgb(43, 43, 43);
-}
-.play-button{
-  width:70px;
-  height:70px;
-  margin-right: 3px;
+  justify-content: flex-start;
 }
 
+.artist {
+  width: 40%;
+  text-align: left;
+  padding: 2px;
+}
+
+.song{
+  width: 40%;
+  text-align: left;
+}
+
+.play-button {
+  width:70px;
+  height:70px;
+  margin: 5px;
+}
+
+.button {
+  width: 190px;
+  height: 25x;
+  border-radius: 5px;
+  box-shadow: 2px 2px rgb(43, 43, 43);
+  background-color: rgb(235, 232, 232);
+  font-size: 24px;
+  padding: 10px;
+  font-family: 'Righteous', cursive;
+ }
 /* Search Bar */
   .animated-search-form[type=search] {
     width: 30rem;
@@ -45,17 +67,14 @@ h1 {
     margin: 7rem;
   }
     .animated-search-form[type=search]:focus {
-    width: 100%;
+    width: 40%;
   }
 
-#song-player{
+/* For results page */
+.flex-container{
   align-items: center;
 }
 
-#song-lyrics{
-  align-items: center;
-}
- 
 
 
 

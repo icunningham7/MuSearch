@@ -60,7 +60,6 @@ function fetchSongSearchResults(search) {
         .then(response => response.json())
         .then(data => data.response.hits)
         .catch(err => console.log(err));
-
 }
 
 
@@ -97,18 +96,14 @@ function fetchSongMetaData(songId) {
             return songMetaData;
         })
         .catch(err => console.log(err));
-
 }
 // --- APIs: End --- //
-
-
 
 // --- Display Results: Start --- //
 function displaySongSearchResults(results) {
     resultListEl.textContent = '';
 
     return Promise.all(results.map((result) => buildSearchCard(result)));
-
 }
 
 
@@ -120,12 +115,16 @@ function buildSearchCard(result) {
 
         let resultEl = document.createElement('div');
         let albumEl = document.createElement('img');
+        let artistWrapperEl = document.createElement('div');
         let artistEl = document.createElement('h3');
+        let songWrapperEl = document.createElement('div');
         let songEl = document.createElement('h5');
 
         let playBtnEl = document.createElement('button');
         let playBtnImgEl = document.createElement('img');
 
+        artistWrapperEl.classList.add("artist");
+        songWrapperEl.classList.add('song')
         resultEl.classList.add('card', 'result-card', 'flex-container');
         resultEl.setAttribute('data-song-id', result.result.id);
         resultEl.setAttribute('data-song', result.result.title_with_featured);
@@ -147,8 +146,10 @@ function buildSearchCard(result) {
         playBtnImgEl.setAttribute('src', './assets/images/Play Button.png')
 
         resultEl.appendChild(albumEl);
-        resultEl.appendChild(artistEl);
-        resultEl.appendChild(songEl);
+        artistWrapperEl.appendChild(artistEl);
+        songWrapperEl.appendChild(songEl);
+        resultEl.appendChild(artistWrapperEl);
+        resultEl.appendChild(songWrapperEl);
         resultEl.appendChild(playBtnEl);
         playBtnEl.appendChild(playBtnImgEl);
         resultListEl.appendChild(resultEl);
