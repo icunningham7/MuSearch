@@ -53,6 +53,7 @@ function displaySongPlayer(playerId) {
 
 function displaySongVideo(songDetails) {
     let embedUrl = songDetails.videoId.replace('watch?v=', 'embed/');
+    embedUrl = embedUrl.replace('http', 'https');
     postscribe('#song-player', `<iframe width="560" height="315" src="${embedUrl}" title="${songDetails.song}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
 
 }
