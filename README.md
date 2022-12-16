@@ -39,7 +39,7 @@ THEN I can search the next song.</li>
 <h3>Links to Page</h3>
   <ul>
     <li>Deployed: https://icunningham7.github.io/MuSearch</li>
-    <li>GitHub Repo: https://github.com/icunningham7/MuSearch</li>
+    <li>GitHub Repo: https://github.com/JennyBloemen/MuSearch.git</li>
   </ul>
 
 <h3>Screenshot or Video of Application</h3>
